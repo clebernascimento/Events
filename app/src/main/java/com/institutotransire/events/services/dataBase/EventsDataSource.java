@@ -40,11 +40,6 @@ public class EventsDataSource extends RetrofitConfig{
         call.enqueue(callback);
     }
 
-    public void setCheckin(int id, String name, String email, Callback<Void> callback){
-        Call<Void> call = api.setCheckin(id, name, email);
-        call.enqueue(callback);
-    }
-
     public void checkin(DetailsEvents detailsEvents, Callback<Void> callback){
         Call<Void> call = api.checkin(detailsEvents);
         call.enqueue(callback);

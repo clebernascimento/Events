@@ -105,7 +105,7 @@
                     android:layout_marginTop="@dimen/Top16"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="center"
-                    android:text="Check-in realizado comsucesso"
+                    android:text="Check-in realizado com sucesso"
                     android:textColor="@color/blue_header"
                     android:textSize="18sp" />
 

@@ -20,11 +20,11 @@ android {
     buildTypes {
         debug {
             debuggable true
-            buildConfigField "String", "BASE_URL", "\"http://5f5a8f24d44d640016169133.mockapi.io/api/\""
+            buildConfigField "String", "BASE_URL", "\"http://5f5a8f24d44d640016169133.mockapi.io\""
         }
         release {
             minifyEnabled false
-            buildConfigField "String", "BASE_URL", "\"http://5f5a8f24d44d640016169133.mockapi.io/api/\""
+            buildConfigField "String", "BASE_URL", "\"http://5f5a8f24d44d640016169133.mockapi.io\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

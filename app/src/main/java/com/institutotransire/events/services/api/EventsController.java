@@ -14,22 +14,15 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface EventsController {
-    @GET("events")
+    @GET("/api/events")
     Call<List<Events>> getEvents();
 
-    @GET("events/{id}")
+    @GET("/api/events/{id}")
     Call<Events> geEvent(
             @Path("id") int id
     );
 
-    @POST("checkin")
-    Call<Void> setCheckin(
-        @Query("checkin") int id,
-        @Query("name") String name,
-        @Query("email") String email
-    );
-
-    @POST("checkin")
+    @POST("/checkin")
     Call<Void> checkin(
             @Body DetailsEvents detailsEvents);
 }

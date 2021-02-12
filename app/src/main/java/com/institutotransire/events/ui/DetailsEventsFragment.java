@@ -23,6 +23,7 @@ import com.institutotransire.events.controller.LoadDialog;
 import com.institutotransire.events.databinding.FragmentDetailsEventsBinding;
 import com.institutotransire.events.services.dataBase.EventsDataSource;
 import com.institutotransire.events.services.model.Contains;
+import com.institutotransire.events.services.model.DetailsEvents;
 import com.institutotransire.events.util.Formatters;
 import com.institutotransire.events.util.ImgUtil;
 
@@ -110,16 +111,18 @@ public class DetailsEventsFragment extends Fragment implements View.OnClickListe
         String name = detailsEventsBinding.editName.getText().toString();
         String email = detailsEventsBinding.editEmail.getText().toString();
 
+        DetailsEvents bodyEvesnts = new DetailsEvents(Contains.id, name, email);
+
         detailsEventsBinding.btnChekin.setOnClickListener(view -> {
             if (!validate(name, email)) return;
             ;
             LoadDialog.showStandardLoading(loadDialogEvents, "Aguade! Estamos fazendo seu check-in.");
-            mEventsDataSource.setCheckin(Contains.id, name, email, new Callback<Void>() {
+            mEventsDataSource.checkin(bodyEvesnts, new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     System.out.println("CHECK-IN REALIZADO");
                     System.out.println(response);
-                    if (response.code() == 200) {
+                    if (response.isSuccessful()) {
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.container, ChekinFragment.newInstance())

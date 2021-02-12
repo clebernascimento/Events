@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class DetailsEvents {
-    private int id;
+    private int eventId;
     private String name;
     private String email;
 }
