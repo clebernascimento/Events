@@ -1,0 +1,12 @@
+package com.institutotransire.events.services.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class DetailsEvents {
+    private int id;
+    private String name;
+    private String email;
+}
