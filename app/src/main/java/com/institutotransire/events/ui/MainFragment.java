@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,14 +13,12 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 
 import com.institutotransire.events.R;
 import com.institutotransire.events.adapter.EventsAdapter;
 import com.institutotransire.events.controller.LoadDialog;
 import com.institutotransire.events.databinding.FragmentMainBinding;
-import com.institutotransire.events.services.dataBase.EventsDataSource;
+import com.institutotransire.events.services.dataSource.EventsDataSource;
 import com.institutotransire.events.services.model.Contains;
 import com.institutotransire.events.services.model.Events;
 

@@ -21,7 +21,7 @@ import com.institutotransire.events.R;
 import com.institutotransire.events.controller.DateTime;
 import com.institutotransire.events.controller.LoadDialog;
 import com.institutotransire.events.databinding.FragmentDetailsEventsBinding;
-import com.institutotransire.events.services.dataBase.EventsDataSource;
+import com.institutotransire.events.services.dataSource.EventsDataSource;
 import com.institutotransire.events.services.model.Contains;
 import com.institutotransire.events.services.model.DetailsEvents;
 import com.institutotransire.events.util.Formatters;
@@ -64,7 +64,6 @@ public class DetailsEventsFragment extends Fragment implements View.OnClickListe
         main = ((MainActivity) getActivity());
         loadDialogEvents = new LoadDialog(getContext());
         detailsEventsBinding.btnBackHome.setOnClickListener(this);
-        detailsEventsBinding.btnCompanyTryAgain.setOnClickListener(this);
         setAPI();
         getDetailsEvents();
         formChekin();
@@ -79,10 +78,6 @@ public class DetailsEventsFragment extends Fragment implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btn_backHome:
                 goToHome();
-                break;
-
-            case R.id.btnCompanyTryAgain:
-                getDetailsEvents();
                 break;
         }
     }
@@ -130,22 +125,29 @@ public class DetailsEventsFragment extends Fragment implements View.OnClickListe
 
                     } else {
                         System.out.println("ERRO AO FAZER CHECK-IN");
-                        getActivity().getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.container, ErroCheckinFragment.newInstance())
-                                .commit();
+                        setErrorCheckin();
                     }
-                    loadDialogEvents.dismissIt();
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
                     System.out.println("ERRO DE REQUISICAO AO FAZER CHECK-IN");
                     Log.e("Error", t.getMessage());
-                    loadDialogEvents.dismissIt();
+                    setErrorCheckin();
                 }
             });
+            loadDialogEvents.dismissIt();
         });
+    }
+
+    /**
+     * Metodo para fragmento de erro de check-in
+     */
+    public void setErrorCheckin(){
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, ErroCheckinFragment.newInstance())
+                .commit();
     }
 
     public boolean validate(String name, String email) {

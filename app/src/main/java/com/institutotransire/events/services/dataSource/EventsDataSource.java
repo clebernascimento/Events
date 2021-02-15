@@ -1,7 +1,6 @@
-package com.institutotransire.events.services.dataBase;
+package com.institutotransire.events.services.dataSource;
 
 import com.institutotransire.events.services.api.EventsController;
-import com.institutotransire.events.services.model.Contains;
 import com.institutotransire.events.services.model.DetailsEvents;
 import com.institutotransire.events.services.model.Events;
 
